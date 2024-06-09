@@ -6,7 +6,7 @@ User = get_user_model()
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE,related_name='posts')
     created_at = models.DateTimeField(auto_now_add=True)
     image=models.ImageField(upload_to='posts/images',blank=True)
     video = models.FileField(upload_to='posts/videos', blank=True, validators=[FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'webm', 'mkv'])])
